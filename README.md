@@ -10,10 +10,14 @@ After that we decided to implement the `exit` built-in function. So we decided t
 
 The `echo` built-in function was chosen as the first "complex" function to be implemented using tests. So we created a "test suite", but we were not able to end the implementation because it was not so easy to handle the exit string from the echo command (we had to use file descriptors).
 
+## Second meetup - 2023.may.12
+
+We resumed the simplest `echo` implementation with 2 tests, we improved Makefile to runtests and updated our `main.c` to call the `echo` function.
+
 ## Next steps
 
-- finish the `echo` built-in function
-- implement `pwd` with tests
-- I don't know
+- study [bash manual](https://www.gnu.org/software/bash/manual/bash.html#Shell-Operation)
+- study [explainshell.com](https://explainshell.com/)
+- decide what to do next
 
 See ya next friday! Let's unstuck!
