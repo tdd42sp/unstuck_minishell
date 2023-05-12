@@ -2,6 +2,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+void    echo(char *input);
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -24,6 +26,9 @@ int main(void)
 	while (ft_strncmp(input, "exit", 5) != 0)
 	{
 		input = readline("$ ");
-		printf("%s\n",input);
+		if (ft_strncmp(input, "echo", 4) == 0)
+		{
+			echo(&input[5]);
+		}
 	}
 }
