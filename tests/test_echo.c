@@ -1,8 +1,12 @@
 #include "minunit.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>  
 
 int     fd;
 char    *file = "./files/test_fd";
 int     bkp;
+char    text[1000];
 
 int setup_fd()
 {   
@@ -16,8 +20,6 @@ int setup_fd()
 
 char *unset_fd()
 {
-    char text[1000];
-
     close(fd);
     fd = open(file, O_RDONLY);
     read(fd, text, 1000);
@@ -37,7 +39,7 @@ MU_TEST_SUITE(echo_inserting_lula_should_print_lula)
 
 MU_TEST_SUITE(test_suite)
 {
-    MU_RUN_TEST(um_teste);
+    MU_RUN_TEST(echo_inserting_lula_should_print_lula);
 }
 
 int main() {
