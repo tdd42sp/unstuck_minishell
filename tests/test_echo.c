@@ -8,6 +8,9 @@
 int     fd;
 char    *file = "./test_fd";
 int     bkp;
+char    text[1000];
+
+void    echo(char *input);
 
 void    echo(char *input);
 
