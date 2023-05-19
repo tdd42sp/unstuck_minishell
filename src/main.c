@@ -25,6 +25,7 @@ int main(void)
 {
 	char    *input;
 	char	**returnExecv;
+	char	**start;
 
 	input = "";
 	while (ft_strncmp(input, "exit", 5) != 0)
@@ -34,14 +35,11 @@ int main(void)
 		{
 			echo(&input[5]);
 		} else {
-			returnExecv = ft_split(input, ' ');
+			start = returnExecv = ft_split(input, ' ');
 			exec_commands(returnExecv);
 			while(*returnExecv)
-			{
-				free(*returnExecv);
-				returnExecv++;
-			}
-			//free(returnExecv);
+				free(*returnExecv++);
+			free(start);
 		}
 	}
 }
