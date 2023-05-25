@@ -28,6 +28,7 @@ int main(void)
 	char	**start;
 
 	input = "";
+	printf("Welcome to a work-in-progress minishell!\n");
 	while (ft_strncmp(input, "exit", 5) != 0)
 	{
 		input = readline("$ ");
