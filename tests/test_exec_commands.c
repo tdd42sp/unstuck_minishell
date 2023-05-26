@@ -5,12 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char *path[] = {"/bin/", NULL};
 int     fd;
 char    *file = "./test_fd";
 int     bkp;
 char    text[1000];
 
-void exec_commands(char **pathname);
+void exec_commands(char **pathname, char **path);
 
 int setup_fd()
 {   
@@ -41,12 +42,27 @@ void    unset_fd()
 
 MU_TEST(test_what_execute_function_do)
 {
-    char *command[] = {"/usr/bin/cat", "arquivo",NULL};
+    //file arquivo deve estar no diretório raiz, caso não haverá erro.
+    char *command[] = {"cat", "arquivo", NULL};
     char *expected = "oie";
     char *result;
 
     setup_fd();
-    exec_commands(command);
+    exec_commands(command, path);
+    result = get_fd_content();
+    unset_fd();
+
+    mu_assert_string_eq(expected, result); 
+}
+
+MU_TEST(test_printfa)
+{
+    char *command[] = {"printf", "a", NULL};
+    char *expected = "a";
+    char *result;
+
+    setup_fd();
+    exec_commands(command, path);
     result = get_fd_content();
     unset_fd();
 
@@ -56,6 +72,7 @@ MU_TEST(test_what_execute_function_do)
 MU_TEST_SUITE(test_suite)
 {
     MU_RUN_TEST(test_what_execute_function_do);
+    MU_RUN_TEST(test_printfa);
 }
 
 int main() {

@@ -6,7 +6,7 @@
 void    echo(char *input);
 char	**ft_split(char const *s, char c);
 void exec_commands(char **pathname);
-
+char	*ft_strjoin(char const *s1, char const *s2)
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -21,6 +21,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
+
 int main(void)
 {
 	char    *input;
@@ -31,8 +32,9 @@ int main(void)
 	printf("Welcome to a work-in-progress minishell!\n");
 	while (ft_strncmp(input, "exit", 5) != 0)
 	{
-		input = readline("$ ");
-		if (ft_strncmp(input, "echo", 4) == 0)
+		input = readline("$ ");//Lê a entrada do terminar e a armazena em input.
+		//Gambs -> se comando for echo faz o echo, [será refatorado]
+		if (ft_strncmp(input, "echo", 4) == 0) 
 		{
 			echo(&input[5]);
 		} else {
