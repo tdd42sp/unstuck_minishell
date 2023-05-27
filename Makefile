@@ -15,7 +15,6 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g3
 LDFLAGS	= -lreadline
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -34,5 +33,8 @@ re: fclean all
 
 test: $(NAME)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME) && ./$(NAME)
+
+valgrind: $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME) && valgrind ./$(NAME)
 
 .PHONY: all clean fclean re test
