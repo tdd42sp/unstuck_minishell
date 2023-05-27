@@ -35,6 +35,6 @@ test: $(NAME)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME) && ./$(NAME)
 
 valgrind: $(NAME)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME) && valgrind ./$(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME) -q --leak-check=full && valgrind ./$(NAME)
 
 .PHONY: all clean fclean re test
